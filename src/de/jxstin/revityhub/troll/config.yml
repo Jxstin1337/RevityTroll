@@ -1,0 +1,25 @@
+#Danke für deinen Download dieses Plugins auf SpigotMC.org <3
+#In dieser Datei kannst du die wichtigsten Einstellungen und Nachrichten bearbeiten
+#Das Plugin wird zur Verfügung gestellt vom RevityHub.net Netzwerk
+
+RevityTroll:
+  prefix: "&5&lRevity&2&lTroll"
+  prefixUnicode: " &7» "
+  permission: "revitytroll.use"
+  inv_items:
+    colorCode: "&2&l"
+  messages:
+    granate: "Eine &2&lGranate &7wurde deinem Inventar hinzugefügt"
+    freeze: "&9%target% &7wurde &2gefreezed"
+    unfreeze: "&9%target% &7wurde &2entfreezed"
+    crash_game: "Das Spiel von &9%target% &7wurde &2gecrashed"
+    strike: "&9%target% &7wurde &2geblitzt"
+    boost: "&9%target% &7wurde in die Höhe &2geboosted"
+    item_switch: "Die Items von &9%target% &7wurden &2durcheinander gewürfelt"
+    head_spin: "&9%target% &7ist nun für &e3 Sekunden &7im &2Head Spin"
+  granate:
+    explosion_power: 8
+    setFire: false
+    destroyBlocks: true
+  boost:
+    power: 5

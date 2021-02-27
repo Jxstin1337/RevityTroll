@@ -1,0 +1,8 @@
+name: RevityTroll
+version: ALPHA-1.0.0
+author: Jxstin1337
+main: de.jxstin.revityhub.troll.main.Main
+api-version: 1.16
+
+commands:
+  troll:
