@@ -15,6 +15,7 @@ public class PlayerQuitLeave_Listener implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         Player p = event.getPlayer();
         if (Main.getPlugin().getInFreeze().contains(p)) {
+            p.setWalkSpeed(0.2F);
             Main.getPlugin().getInFreeze().remove(p);
         }
     }
@@ -23,6 +24,7 @@ public class PlayerQuitLeave_Listener implements Listener {
     public void onLeave(PlayerKickEvent event) {
         Player p = event.getPlayer();
         if (Main.getPlugin().getInFreeze().contains(p)) {
+            p.setWalkSpeed(0.2F);
             Main.getPlugin().getInFreeze().remove(p);
         }
     }
