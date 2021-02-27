@@ -6,6 +6,9 @@ RevityTroll:
   prefix: "&5&lRevity&2&lTroll"
   prefixUnicode: " &7» "
   permission: "revitytroll.use"
+  no_permission:
+    enabled: true
+    message: "&cDazu hast du keine Rechte!"
   inv_items:
     colorCode: "&2&l"
   messages:
