@@ -40,6 +40,13 @@ public class RevityTroll_CMD implements CommandExecutor {
                     } else {
                         p.sendMessage(Main.getPlugin().getPrefix() + "Benutze: /troll <name> §eoder §7/troll <rl/reload>");
                     }
+                } else {
+                    if (Main.getPlugin().getConfig().getBoolean("RevityTroll.no_permission.enabled")) {
+                        p.sendMessage(Main.getPlugin().getPrefix() + Main.getPlugin().getConfig()
+                                .getString("RevityTroll.no_permission.message")
+                                .replaceAll("%target%", p.getName())
+                                .replaceAll("&", "§"));
+                    }
                 }
             }
         } else {
