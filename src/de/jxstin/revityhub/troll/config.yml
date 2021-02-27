@@ -8,7 +8,7 @@ RevityTroll:
   permission: "revitytroll.use"
   no_permission:
     enabled: true
-    message: "&cDazu hast du keine Rechte!"
+    message: "&cDazu hast du keine Rechte"
   inv_items:
     colorCode: "&2&l"
   messages:
