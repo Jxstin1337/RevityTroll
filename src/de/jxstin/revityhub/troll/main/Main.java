@@ -3,10 +3,7 @@ package de.jxstin.revityhub.troll.main;
 // created by Justin Fiedler on 21.02.2021 with IntelliJ
 
 import de.jxstin.revityhub.troll.commands.RevityTroll_CMD;
-import de.jxstin.revityhub.troll.listeners.InventoryClick_Listener;
-import de.jxstin.revityhub.troll.listeners.PlayerInteract_Listener;
-import de.jxstin.revityhub.troll.listeners.PlayerJump_Listener;
-import de.jxstin.revityhub.troll.listeners.PlayerQuitLeave_Listener;
+import de.jxstin.revityhub.troll.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -17,8 +14,10 @@ import java.util.ArrayList;
 public class Main extends JavaPlugin {
 
     static Main plugin;
-    String prefix;
+    String prefix = "§5§lRevity§2§lTroll §7» ";
     ArrayList<Player> inFreeze = new ArrayList<>();
+    InventoryClick_Listener inventoryClick_Listener;
+    String usedVersion;
 
     public static Main getPlugin() {
         return plugin;
@@ -39,6 +38,12 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        if (!(isVersionSupported())) {
+            getLogger().severe("Die Version deines Servers wird nicht unterstützt!");
+            getLogger().severe("Unterstützte Versionen: 1.16.X");
+            Bukkit.getPluginManager().disablePlugin(getPlugin());
+            return;
+        }
         registerListeners();
         registerCommands();
         saveDefaultConfig();
@@ -63,7 +68,6 @@ public class Main extends JavaPlugin {
 
     public void registerListeners() {
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new InventoryClick_Listener(), getPlugin());
         pm.registerEvents(new PlayerInteract_Listener(), getPlugin());
         pm.registerEvents(new PlayerJump_Listener(), getPlugin());
         pm.registerEvents(new PlayerQuitLeave_Listener(), getPlugin());
@@ -80,5 +84,29 @@ public class Main extends JavaPlugin {
 
     public String getColorCode() {
         return getConfig().getString("RevityTroll.inv_items.colorCode").replaceAll("&", "§");
+    }
+
+    public Boolean isVersionSupported() {
+        PluginManager pm = Bukkit.getPluginManager();
+
+        try {
+            usedVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        if (usedVersion.equals("v1_16_R1")) {
+            inventoryClick_Listener = new InventoryClick_Listener_v1_16_R1();
+            pm.registerEvents(new InventoryClick_Listener_v1_16_R1(), getPlugin());
+        } else if (usedVersion.equals("v1_16_R2")) {
+            inventoryClick_Listener = new InventoryClick_Listener_v1_16_R2();
+            pm.registerEvents(new InventoryClick_Listener_v1_16_R2(), getPlugin());
+        } else if (usedVersion.equals("v1_16_R3") || usedVersion.equals("v1_16_R4") || usedVersion.equals("v1_16_R5")) {
+            inventoryClick_Listener = new InventoryClick_Listener_v1_16_R3to5();
+            pm.registerEvents(new InventoryClick_Listener_v1_16_R3to5(), getPlugin());
+        }
+
+        return inventoryClick_Listener != null;
     }
 }
