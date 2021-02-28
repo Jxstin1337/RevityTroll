@@ -42,7 +42,6 @@ public class Main extends JavaPlugin {
             getLogger().severe("Die Version deines Servers wird nicht unterstützt!");
             getLogger().severe("Unterstützte Versionen: 1.16.X");
             Bukkit.getPluginManager().disablePlugin(getPlugin());
-            return;
         }
         registerListeners();
         registerCommands();
