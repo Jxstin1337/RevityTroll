@@ -96,7 +96,10 @@ public class Main extends JavaPlugin {
             return false;
         }
 
-        if (usedVersion.equals("v1_16_R1")) {
+        if (usedVersion.equals("v1_15_R1")) {
+            inventoryClick_Listener = new InventoryClick_Listener_v1_15_R1();
+            pm.registerEvents(new InventoryClick_Listener_v1_15_R1(), getPlugin());
+        } else if (usedVersion.equals("v1_16_R1")) {
             inventoryClick_Listener = new InventoryClick_Listener_v1_16_R1();
             pm.registerEvents(new InventoryClick_Listener_v1_16_R1(), getPlugin());
         } else if (usedVersion.equals("v1_16_R2")) {
