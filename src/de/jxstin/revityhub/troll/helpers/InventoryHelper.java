@@ -35,7 +35,7 @@ public class InventoryHelper {
                 inv.setItem(i, ItemHelper.createTrollInvItem(colorCode + "Boost", Material.RABBIT_FOOT, 1));
             }
             if (i == 15) {
-                inv.setItem(i, ItemHelper.createTrollInvItem(colorCode + "Item Switch", Material.NETHERITE_SWORD, 1));
+                inv.setItem(i, ItemHelper.createTrollInvItem(colorCode + "Item Switch", Material.DIAMOND_SWORD, 1));
             }
             if (i == 16) {
                 inv.setItem(i, ItemHelper.createTrollInvHead(colorCode + "Head Spin", t.getName(), 1));
